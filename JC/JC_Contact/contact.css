@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 7, 2019, 6:15:34 PM
+    Author     : Moxank
+*/
+a:link, a:visited {
+                background-color: #000000;
+                color: white;
+                width: 96.72%;
+                min-height: 30px;
+                padding: 14px 25px;
+                text-align: left; 
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            a:hover, a:active {
+                background-color: red;
+            }

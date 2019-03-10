@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 8, 2019, 4:29:04 PM
+    Author     : Moxank
+*/
+
+
+            #sub{
+           top: 0;
+        }
+        #text{
+             table-layout: auto;
+             align-self: center;
+        }
+            a.a:link, a.a:visited {
+                background-color: #000000;
+                color: white;
+                width: 100%;
+                min-height: 30px;
+                padding: 14px 25px;
+                text-align: left; 
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            a.a:hover, a.a:active {
+                background-color: red;
+            }
+           
+            table.question_table{
+                
+                width: 100%;
+                 padding: 15px;
+                text-align: left;
+            }
+            td.td_q{
+                width: 50%;
+                 padding: 15px;
+                text-align: left;
+            }
+
+            div {
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            div.solved{
+                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                 padding: 15px;
+                 background: #00ba9d;
+            }
+            div.solved:hover{
+                background: #003333;
+            }
+            font.f{
+                font-style: italic;
+            }
+            input.buu{
+                 border: 1px solid #0ab4b4;
+    background:#007bff;
+  font-size: 18px;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 50px;
+  cursor: pointer;
+  transition: .4s;
+            }
+            .buu:hover {
+                background: #33ffff;
+  padding: 10px 80px;
+}
