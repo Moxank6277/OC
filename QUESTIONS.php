@@ -1,14 +1,11 @@
 <html>
     <head>
-        <style>
-
-        </style>
-
+        <link rel="shortcut icon" type="image/x-icon" href="./PACKAGE/LOGO.png" />
         <link rel="stylesheet" href="JC/QUESTIONS.css">
         <meta charset="UTF-8">
         <title></title>
     </head>
-    <body>
+    <body background="PACKAGE/b1.jpg" style="background-repeat: no-repeat; background-size: cover;">
 
         <?php
         session_start();
@@ -23,9 +20,11 @@
         //echo $_SESSION['q_type'];
         $queType=$_SESSION['q_type'];
         $dbhandler =new PDO('mysql:host=127.0.0.1;dbname=project_complier','ce1','ce1');
-        echo "<font size=\"5\"class=\"display\">";   
+        echo "<div class=\"container\" style=\"background-color: rgba(0, 0, 0, 0.5); opacity:0.8;\">"
+        . "<div style=\"background-color: rgba(0, 0, 0, 0.7);\">"
+                . "<font size=\"5\"class=\"display text-white\">";   
         echo "YOU HAVE SELECTED ".$queType;
-        echo "</font>";
+        echo "</div></font>";
         $dbhandler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $sql = 'select q_id,name from questions where q_type=?';
             $query = $dbhandler->prepare($sql);
@@ -35,13 +34,13 @@
             $sql_solved='select case_status from track_score where user_id=? and q_id=?';
             while ($r = $query->fetch(PDO::FETCH_ASSOC)) {
                 ?>
-                <div>
-                    <form action="SOLVE.php" method="POST">
+        <div style="background-color: rgba(0, 0, 0, 0.4);" >
+                    <form action="SOLVE.php" method="POST" >
                        <input type="hidden" name="q_id" value="<?php echo $r['q_id'] ?>"/>
-                        <table border="0" class="question_table">
+                       <table border="0" class="question_table table ">
                                     <tbody>
                                         <tr>
-                                            <td class="td_q"><font class="f" size="5"><?php echo strtoupper($r['name']); ?></font></td>
+                                            <td class="td_q"><font class="f text-white" size="5"><?php echo strtoupper($r['name']); ?></font></td>
                                             <td class="td_q"><input class="buu" type="submit" value="Solve.."/><br></td>
                                           <?php
                                           
@@ -54,19 +53,20 @@
                                             echo " <td><div class=\"alert alert-danger\">UNSOLVED</div></td>";
                                         }
                                            ?>
+                                            
                                         </tr>
                                     </tbody>
                                 </table>          
                     </form>
-                </div>
+        </div>
                 <?php
             }
-            //   echo "</ol>";
+               echo "</div>";
             // put your code here
             }
             else{
                 
-                $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER/";
+                $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPILER/";
                 header("location: ".$re."OPTIONS.php");
             }
             

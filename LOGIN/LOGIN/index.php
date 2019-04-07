@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>LOGIN</title>
-  
+  <link rel="shortcut icon" type="image/x-icon" href="../../PACKAGE/LOGO.png" />
+
   
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
 
       <link rel="stylesheet" href="css/style.css">
-
+      <!--<link rel="stylesheet" href="../../JC/bootstrap/css/bootstrap.css">-->
   
 </head>
 <style>
@@ -27,6 +28,7 @@
             a:hover, a:active {
                 background-color:#003333;
             }
+            .card-header{padding:.75rem 1.25rem;margin-bottom:0;background-color:#ffffff;border-bottom:1px solid rgba(0,0,0,.125)}
 </style>
 <body>
   <div class="signupSection">
@@ -52,8 +54,8 @@
       
     </ul>
   </form><br><br><center>
-  <h2>REGISTER</h2><br>
-    <form action="/PHP/COMPLIER/REGISTRATION/index.php" method="post">
+     <br>
+    <form action="/PHP/COMPILER/REGISTRATION/index.php" method="post">
       <li id="center-btn">
           
           <input type="submit" id="join-btn" name="join" alt="Join" value="REGISTER">
@@ -63,7 +65,7 @@
             <tr>
             <center>
                 <td ><p class="outset"><a type="email" class="" href="mailto:contact_us@xmail.com">CONTACT-US</a></p></td></tr><tr>
-                    <td><p class="outset"><a href="/PHP/COMPLIER/about_us.php">ABOUT US</a></p></td></tr><tr>
+                    <td><p class="outset"><a href="/PHP/COMPILER/about_us.php">ABOUT US</a></p></td></tr><tr>
             </center>
         </tr>
             </center> </table>
@@ -77,15 +79,15 @@
 <?php
     session_start();
     if(isset($_SESSION['username'])){
-        header ("location: /PHP/COMPLIER/welcome.php");
-        echo "adf";
+        header ("location: /PHP/COMPILER/welcome.php");
+        //echo "adf";
     }
    // session_abort();
   //  print_r($_SESSION['username']);
     $email=filter_input(INPUT_POST,'email');
     $pass=filter_input(INPUT_POST,'password');
-    print_r($email);
-    print_r($pass);
+    //print_r($email);
+   // print_r($pass);
     if($email!=null && $pass!=null)
     {
         $dbcon=new PDO('mysql:host=127.0.0.1;dbname=project_complier','ce1','ce1');
@@ -109,15 +111,15 @@
            if(strcasecmp($res['user_type'],"ADMIN")==0)
            {
                $_SESSION['user_type']="ADMIN";
-               header ("location: /PHP/COMPLIER/ADMIN/admin.php");
+               header ("location: /PHP/COMPILER/ADMIN/admin.php");
            }
            else{
-          header ("location: /PHP/COMPLIER/welcome.php");
+          header ("location: /PHP/COMPILER/welcome.php");
            }
             
         }
         else{
-            echo "ENTER VALID CREDENTIAL";
+            echo "<div class=\"card-header\" ><center>ENTER VALID CREDENTIAL</center></div>";
         }
           
             

@@ -2,7 +2,7 @@
 
 	
 textarea{
-	width:400px;
+	width:100%;
 		
 	/* The following three rules make a difference in the script */
 	overflow:hidden;

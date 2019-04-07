@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>REGISTER</title>
-  
+  <link rel="shortcut icon" type="image/x-icon" href="../PACKAGE/LOGO.png" />
   
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css'>
@@ -53,7 +53,7 @@
       <li id="center-btn">
         <input type="submit" id="join-btn" name="join" alt="Join" value="Join">
       </li><br>
-      <a href="/PHP/COMPLIER">LOGIN<a>
+      <a href="/PHP/COMPILER">LOGIN<a>
     </ul>
   </form>
 </div>
@@ -80,7 +80,7 @@
        // print_r($yu);
          $command="mkdir ".$name;
          //exec($command);
-         $re="location: http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER/LOGIN/LOGIN/index.php";
+         $re="location: http://".$_SERVER['HTTP_HOST']."/PHP/COMPILER/LOGIN/LOGIN/index.php";
         header($re);
      }
      ?>

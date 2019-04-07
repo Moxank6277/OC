@@ -11,7 +11,7 @@ and open the template in the editor.
         .alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}.alert-danger hr{border-top-color:#e4b9c0}.alert-danger .alert-link{color:#843534}
        .alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.alert-success hr{border-top-color:#c9e2b3}.alert-success .alert-link{color:#2b542c}
        
-        body {background: #F0F0F0;}
+/*        body {background: #F0F0F0;}*/
         textarea.res{
             width: 750px;
               height: 100px;
@@ -20,34 +20,7 @@ and open the template in the editor.
             width: 750px;
               height: 500px;
         }
-        #join-btn {
-  border: 1px solid #0ab4b4;
-  background:#007bff;
-  font-size: 18px;
-  color: white;
-  margin-top: 20px;
-  padding: 10px 50px;
-  cursor: pointer;
-  transition: .4s;
-}
-#join-btn:hover {
-  background: rgba(20, 20, 20, 0.8);
-  padding: 10px 80px;
-}
-button.join-btn {
-  border: 1px solid #0ab4b4;
-  background:#007bff;
-  font-size: 18px;
-  color: white;
-  margin-top: 20px;
-  padding: 10px 50px;
-  cursor: pointer;
-  transition: .4s;
-}
-button.join-btn:hover {
-  background: rgba(20, 20, 20, 0.8);
-  padding: 10px 80px;
-}
+       
 div.que{
 
     position: fixed;

@@ -1,3 +1,5 @@
+<head><link rel="shortcut icon" type="image/x-icon" href="../PACKAGE/LOGO.png" />
+</head>
 <?php
 session_start();
 include '../PACKAGE/header.php';
@@ -21,7 +23,7 @@ if(strcmp(filter_input(INPUT_POST,'edit'),"edit")==0){
     $up_name= filter_input(INPUT_POST,'username');
     $up_pass= filter_input(INPUT_POST,'pass');
     $up_email=filter_input(INPUT_POST,'email');
-    
+    echo "<div class=\"container\"> ";
     if((strcmp($up_email,$email)!=0 || strcmp($up_pass,$pass)!=0 || strcmp($up_name,$name)!=0 )&&$up_email!=null)
     {
         try{
@@ -32,45 +34,52 @@ if(strcmp(filter_input(INPUT_POST,'edit'),"edit")==0){
  catch (Exception $e){print_r($e);
      
  }
-        echo "<div class=\"card-header\"><center><h3 class=\"display-4\">Successfully Updated!!<br>To See Change Login Again</h3></center></div>";  
+        echo "<div class=\"card-header\"style=\"background-color: rgba(0, 0, 0, 0.5);\" ><center><h3 class=\"display-4\"><font color=\"white\">Successfully Updated!!<br>To See Change Login Again</font></h3></center></div>";  
    // echo $up_name;
     
+    }
+    else if(filter_input(INPUT_POST,'uedit')!=null){
+        echo "<div class=\"card-header\"style=\"background-color: rgba(0, 0, 0, 0.5);\"><center><h3 class=\"display-4\"><font color=\"white\">No Changes!!</font></h3></center></div>";
     }
 
 
         ?>
 <title>DETAILS</title>
-<div class="container">
-<div class="card">
+ <body background="b1.jpg" style="background-repeat: no-repeat; background-size: cover;">
+     <div class="container text-white" style="opacity: 0.89;">
+         <div class="card" style="background-color: rgba(0, 0, 0, 0.5);">
   <div class="card-header"><form method="post"> <div class="clearfix">
               <div class="display-4"> Account  Info
         <button type="submit" name="edit" class="btn btn-primary" value="edit">Edit</button>
-              </div></div></form>
+              </div></div>
+          <br>
+      *fields are not editable
+      </form>
   </div>
   <form method="post" >
-      <br>
-      <div class="col-auto">
-          <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                  <div class="input-group-text">Username&nbsp;
-                      <input type="text" class="form-control" name="username" required maxlength="150" value="<?php echo $name;?>" <?php echo $dis;?> autofocus>
+  
+      <div class="col-auto ">
+          <div class="input-group mb-12">
+              <div class="input-group-prepend" >
+                  <div class="input-group-text text-white"style="background-color: rgba(0, 0, 0, 0.5);">Username&nbsp;
+                      <input type="text" style="background-color: rgba(0, 0, 0, 0.5);"class="form-control text-white" name="username" required maxlength="150" value="<?php echo $name;?>" <?php echo $dis;?> autofocus>
           </div></div>
               </div>
       </div>
       <div class="col-auto">
-          <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                  <div class="input-group-text">Password&nbsp;
-                      <input type="password" class="form-control" name="pass" required maxlength="150" value="<?php echo $pass;?>" <?php echo $dis;?> autofocus>
+          <div class="input-group mb-2 md-6">
+              <div class="input-group-prepend ">
+                  <div class="input-group-text text-white"style="background-color: rgba(0, 0, 0, 0.5);">Password&nbsp;
+                      <input type="password" class="form-control text-white"style="background-color: rgba(0, 0, 0, 0.5);" name="pass" required maxlength="150" value="<?php echo $pass;?>" <?php echo $dis;?> autofocus>
           </div></div>
               </div>
       </div>
 
       <div class="col-auto">
-            <div class="input-group mb-2">
+            <div class="input-group mb-12">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">Email&nbsp;
-                        <input type="text" name="email" required value="<?php echo $email;?>" <?php echo $dis;?> class="form-control" id="inlineFormInputGroup" >
+                    <div class="input-group-text text-white"style="background-color: rgba(0, 0, 0, 0.5);">Email&nbsp;
+                        <input type="text" name="email"style="background-color: rgba(0, 0, 0, 0.5);" required value="<?php echo $email;?>" <?php echo $dis;?> class="form-control text-white" id="inlineFormInputGroup" >
            </div></div>
                 </div>
          </div>
@@ -78,20 +87,20 @@ if(strcmp(filter_input(INPUT_POST,'edit'),"edit")==0){
            <div class="col-auto">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">User Type&nbsp;
+                    <div class="input-group-text text-white"style="background-color: rgba(0, 0, 0, 0.5);">*User Type&nbsp;
                 
-                <input type="text" name="type" value="<?php echo $type;?>"  class="form-control" disabled>
+                <input type="text" name="type"style="background-color: rgba(0, 0, 0, 0.5);" value="<?php echo $type;?>"  class="form-control text-white" disabled>
            </div></div></div>
          </div>
       <div class="col-auto">
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">Your Total Score   
+                    <div class="input-group-text text-white"style="background-color: rgba(0, 0, 0, 0.5);">*Your Total Score   
 &nbsp;              
-                <input type="text" name="" value="<?php print_r( $result_update_real[0][0]);?>"  class="form-control" disabled>
+                <input type="text" name="" style="background-color: rgba(0, 0, 0, 0.5);"value="<?php print_r( $result_update_real[0][0]);?>"  class="form-control text-white" disabled>
                     </div></div>
                     </div>
-         </div>
+      </div></div>
          <?php
   if($dis==null){
          echo "       
@@ -107,7 +116,7 @@ if(strcmp(filter_input(INPUT_POST,'edit'),"edit")==0){
 
  </div>
 </div>
-
+</body>
 <style>
     div.col-auto{
         width: 1110%;

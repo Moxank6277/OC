@@ -1,5 +1,7 @@
 <html>
     <title>SELECT OPTIONS</title>
+    <head><link rel="shortcut icon" type="image/x-icon" href="./PACKAGE/LOGO.png" />
+</head>
     <style>
            
         #sub{
@@ -43,7 +45,7 @@
                 padding: 20px;
             }
     </style>
-    <body>
+    <body background="PACKAGE/b1.jpg" style="background-repeat: no-repeat; background-size: cover;">
         <?php
         
         session_start();
@@ -53,7 +55,11 @@
         $query=$db->query($sql);
         $result=$query->fetchAll();
         ?>
-                <div class="options">
+        <div class="container">
+            <div class="card" style="background-color: rgba(0, 0, 0, 0.5);">
+        <div class="card-header">
+            <h5 class="display-4 text-white">Select a category</h5></div>
+                <div class="options card-body" style="background-color: rgba(0.5, 0.5, 0.5, 0.5);">
                     <form action="QUESTIONS.php" method="POST">
                         <table border="0" class="option_table">
                                     <tbody>
@@ -82,7 +88,8 @@
                                         </tbody>
                                 </table>
                     </form>
-                </div>
+                </div></div>
+        </div>
         <?php  include 'PACKAGE/footer.html';?>
     </body>
 </html>

@@ -1,7 +1,13 @@
 <html><head>
     <title>QUESTIONS</title>
     <link rel="stylesheet" href="JC/SOLVE.css">
-    </head>
+    <link rel="shortcut icon" type="image/x-icon" href="./PACKAGE/LOGO.png" />
+
+    </head>    
+    <body background="PACKAGE/b1.jpg" style="background-repeat: no-repeat; 
+          background-size: cover; backface-blend-mode:overlay; 
+          background-size: auto;">
+
         <?php
             session_start();
         include'PACKAGE/header.php';
@@ -25,8 +31,27 @@
         $query_testcase->execute(array($_SESSION['q_id']));
         $r_test=$query_testcase->fetchAll();
 	//echo '<pre>', print_r($r),'</br>';
+                echo "<body background=\"PACKAGE/b1.jpg\" style=\"background-repeat: no-repeat; background-size: cover;\">";
+
         
-        echo "<div class=\"card-header\">QUESTION: ".$r['q_details']."</div><br><form method=\"post\">";
+        echo "<div class=\"container card text-white\" "
+                . "style=\"opacity:0.89;"
+                . "padding:30;"
+                . "background-color: rgba(0, 0, 0, 0.5);"
+                . "\">"
+                . "<div class=\"\"><h3 class=\"text-capitalize\">";
+       
+        
+        $question_name=$r['name'];
+        $question_level=$r['level'];
+        echo $question_name. 
+                "&nbsp;<span class=\"badge badge-sm badge-success\">"
+                . "<font size='2'>"
+                . "Level $question_level"
+                . "</font></span></h3></div>";
+      
+        echo "<div class=\"card-header\"><b>Problem:</b> <br>"
+        .$r['q_details']."</div><br><form method=\"post\">";
        /* foreach($r_test as $key=>$value_test)        {
          echo "<input type=\"radio\" required=\"true\" name=\"test_case\" value=\"".$value_test['case_id']."\">".$value_test['case_id'];
         echo $value_test['case']."<br>";
@@ -50,23 +75,21 @@
         $output=null;
         
         echo "
-        <div id=\"text\"><center><table><tr>";
+        <div id=\"card\"><div class=\"card-header\">
+        <div class=\"d-flex ml-auto\"><h5>
+        Write Your Code
+        </h5>
+        <div class=\"ml-auto justify-content-end\"> 
+        <input type=\"submit\"class=\"btn btn-success btn-sm\" id=\"join-btn\" name=\"join\" alt=\"Submit\" value=\"Submit\">
+        </div>
+        </div>
+        </div>";
         echo "
-        <td>
-        <textarea class=\"input\"rows=\"25\"  onkeydown=\"insertTab(this, event);\" cols=\"50\" name=\"your_ans\" />$v</textarea> "?>
-        </td>
-        </tr>
-        <tr>
-            <td><center>
-   
-        <input type="submit" id="join-btn" name="join" alt="Submit" value="Submit">
-     <br>
-        </center> </td>
-        </tr>
+        
+        <textarea class=\"form-control   card-body\"rows=\"19\"  onkeydown=\"insertTab(this, event);\"  name=\"your_ans\" />$v</textarea> </div>"?>
+  
         <?php
-        echo"
-        </td></tr></table>
-        </center></div>
+        echo"</div></div>
         </form>
         ";
        $solve_flag=1;
@@ -122,17 +145,20 @@
         echo "</center><br></div></div>";
        */
         
-        echo "<center>
-            <button class=\"join-btn\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseeExample$icase\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+          echo "<center><br><br>
+              <div class=\"conatiner card\" style=\"background-color: rgba(0, 0, 0, 0.5);\">
+              <div class=\"container-body\">
+            <button class=\"join-btn btn btn-primary\"style=\"background-color: rgba(0, 0, 0, 0.5);\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseeExample$icase\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
                  Test Case $icase
              </button>
              </center>
             </p>
-             <div class=\"collapse\" id=\"collapseeExample$icase\">
-            <div class=\"card card-body $case_flag\">";
-   
+            </div>
+            <div class=\"collapse\" id=\"collapseeExample$icase\" style=\"background-color: rgba(0, 0, 0, 0.5); opacity:0.70;\">
+            <div class=\"card card-body text-white $case_flag\" style=\"background-color: rgba(0, 0, 0, 0.5); opacity:0.70;\">";
+         
      echo "<center>";
-        echo "<textarea class=\"res\" rows=\"5\" cols=\"50\" readonly >"
+        echo "<textarea class=\"res bg-white\" rows=\"5\" cols=\"50\" readonly >"
         . "OUTPUT:\n";
         print_r($ou);
         echo "</textarea>";
@@ -159,15 +185,17 @@
             //IF ANSWER GENERATED IS CORRECT THAN UPDATE SCORE TABLE
             //echo $solve_flag;
            echo ""
-           . "<br><br><br><div class=\"card-item card-header card \">";
+           . "<br><div class=\"container card\">";
                 if ($solve_flag==1) {
-                    echo"<div class=\"alert-success\">YOUR ANSWER IS CORRECT <br>";
+                    echo"<div class=\"alert-success card container \">YOUR ANSWER IS CORRECT <br>";
                  
                   $test_query = $dbhandler->prepare("select * from track_score where q_id=? and user_id=?");
                     $test_query->execute(array($_SESSION['q_id'],$_SESSION['id']));
                     $result_test_query = $test_query->fetchAll();
-                    if ($result_test_query == null) {
-                        $query_update_score = $dbhandler->prepare("INSERT INTO `track_score` (`user_id`, `score`, `your_ans`, `case_status`, `q_id`)"
+                    if ($result_test_query == null) 
+                    {
+                        $query_update_score = $dbhandler->prepare("INSERT INTO `track_score` "
+                                . "(`user_id`, `score`, `your_ans`, `case_status`, `q_id`)"
                                 . " VALUES (?, ?, ?,?,?)");
                         $query_update_score->execute(array($_SESSION['id'], $score, $_POST['your_ans'], "true", $_SESSION['q_id']));
                     }
@@ -180,28 +208,30 @@
                      */
                     echo "YOUR SCORE IS: ";
                     echo $result_update_real[0]['score']."</div>";
-                } else {
-                    echo "<div class=\"alert-danger\">";
+                }
+                else 
+                {
+                    echo "<div class=\"container card alert-danger\">";
                     echo "YOUR ANSWER IS INCORRECT</div>";
                 }
-                echo "</div>";
+                echo "</div><br><br>";
             }
            // echo "<br>EXTRA".$_SESSION['id'];
      
           
         }
         else{
-            $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER/";
+            $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPILER/";
            header("location:".$re."QUESTIONS.php");
         }
-       
+       echo "<br><br><br></div></body>";
        include 'PACKAGE/footer.html';
        ?>
-<!--        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
 
-    <script src="JC/bootstrap/js/bootstrap.js">
-</script>    -->
+<script src="JC/bootstrap/js/bootstrap.js">
+
 <script>
 //
 //var coll = document.getElementsByClassName("collapsible");
@@ -219,7 +249,7 @@
 //  });
 //}
 //
-//
+
 
 function insertTab(o, e)
 {		
@@ -250,4 +280,5 @@ function insertTab(o, e)
 	return true;
 }
 </script>
+
 </html>

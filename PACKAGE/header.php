@@ -1,32 +1,39 @@
 <?php 
-$re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER";
+$re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPILER";
     if(isset($_SESSION['username'])){
     $name= $_SESSION['username'];
-    echo " <nav class=\"navbar navbar-light sticky-top sticky\" style=\"background-color: #e3f2fd;\">";
-    if(endsWith($_SERVER['REQUEST_URI'],"admin.php")==1 || endsWith($_SERVER['REQUEST_URI'],"LEADERBOARD.php")==1 ||endsWith($_SERVER['REQUEST_URI'],"PRACTISE.php")==1 || endsWith($_SERVER['REQUEST_URI'],"details.php"))
-     echo "   <img src=\"../PACKAGE/LOGO.png\" width=\"30\" height=\"30\" class=\"d-inline-block align-top\" alt=\"\">";
- else {
-      echo "   <img src=\"PACKAGE/LOGO.png\" width=\"30\" height=\"30\" class=\"d-inline-block align-top\" alt=\"\">";
- }
-  echo "<a class=\"navbar-brand\" href=\"#\"><h4 class=\"display-4\">Welcome <b>$name</b></h1></a>
+    echo " <nav class=\"navbar navbar-dark bg-dark sticky-top sticky\" >";
+   
+    //LOGO
+    if (endsWith($_SERVER['REQUEST_URI'], "admin.php") == 1 || endsWith($_SERVER['REQUEST_URI'], "LEADERBOARD.php") == 1 || endsWith($_SERVER['REQUEST_URI'], "PRACTISE.php") == 1 || endsWith($_SERVER['REQUEST_URI'], "details.php"))
+            {
+        echo "   <img src=\"../PACKAGE/LOGO.png\" width=\"45\" height=\"45\" class=\"d-inline-block align-top\" alt=\"\">";
+    }
+    else 
+    {
+        echo "   <img src=\"PACKAGE/LOGO.png\" width=\"45\" height=\"45\" class=\"d-inline-block align-top\" alt=\"\">";
+    }
+    echo "<a class=\"navbar-brand\" href=\"#\"><h5 class=\"display-4\">Welcome <b>$name</b></h5></a>
   <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
     <span class=\"navbar-toggler-icon\"></span>
   </button>
   <div class=\"collapse navbar-collapse \" id=\"navbarNav\">
     <hr><ul class=\"navbar-nav\">
-      <li class=\"nav-item active\">
-      <a class=\"nav-link\" href=\"$re/PACKAGE/details.php\">Account Details<span class=\"sr-only\">(current)</span></a>
+      <li class=\"nav-item \">
+      <a class=\"nav-link\" href=\"$re/PACKAGE/details.php\">Account Details
+       <span class=\"glyphicon glyphicon-search\" aria-hidden=\"true\"></span>
+        <span class=\"sr-only\">(current)</span></a>
       </li><li class=\"nav-item\">
-      <a class=\"nav-link\" href=\"$re/PACKAGE/LEADERBOARD.php\">Leader-Board<span class=\"sr-only\">(current)</span></a>
+      <a class=\"nav-link \" href=\"$re/PACKAGE/LEADERBOARD.php\">Leader-Board<span class=\"sr-only\">(current)</span></a>
       </li>";
      if (isset($_SESSION['user_type'])) {
     if (strcasecmp($_SESSION['user_type'], "ADMIN") == 0) {
-        echo "<li class=\"nav-item\">
-      <a class=\"nav-link\" href=\"$re/ADMIN/admin.php\">Admin</a></li>";
+        echo "<li class=\"nav-item \">
+      <a class=\"nav-link \" href=\"$re/ADMIN/admin.php\">Admin</a></li>";
     }
 }
     echo"<li class=\"nav-item\">
-        <a class=\"nav-item\" href=\"$re/PROGRAMS/LOGOUT.php\">Logout</a>
+        <a class=\"nav-link\" href=\"$re/PROGRAMS/LOGOUT.php\">Logout</a>
       </li>
     </ul>
   </div>
@@ -94,7 +101,7 @@ $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER";
         margin: 2px;
     }
         
-            button.navbar-toggler {
+/*            button.navbar-toggler {
   border: 1px solid #e3f2fd;
   background:#ADD8E6;
   font-size: 18px;
@@ -107,7 +114,7 @@ $re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER";
 button.navbar-toggler:hover {
   background: rgba(20, 20, 20, 0.8);
   padding: 10px 80px;
-}
+}*/
 </style>
 <link rel="stylesheet" href="../JC/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="JC/bootstrap/css/bootstrap.min.css">

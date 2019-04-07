@@ -1,6 +1,6 @@
 <?php
 session_start();
-$re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPLIER/";
+$re="http://".$_SERVER['HTTP_HOST']."/PHP/COMPILER/";
 echo "<br>rmdir /s /q ../PROGRAMS/".$_SESSION['username'];
 exec("cd ../PROGRAMS | rmdir /s /q ".$_SESSION['username'],$ou);
 print_r($ou);
